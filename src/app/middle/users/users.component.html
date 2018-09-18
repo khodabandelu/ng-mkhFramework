@@ -1,6 +1,7 @@
 <div class="container">
-  <h2>Basic Table</h2>
-  <p>The .table class adds basic styling (light padding and horizontal dividers) to a table:</p>
+  <h2>User Table</h2>
+  <p>USer Json :
+    {{users|json}}</p>
   <table class="table">
     <thead>
     <tr>
@@ -12,10 +13,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>John</td>
-      <td>Doe</td>
-      <td>john@example.com</td>
+    <tr *ngFor="let user of users ;">
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.cellphone}}</td>
+      <td>{{user.email}}</td>
     </tr>
     </tbody>
   </table>
