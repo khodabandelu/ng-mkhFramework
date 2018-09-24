@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "mkh",
       "schematics": {},
       "architect": {
         "build": {
@@ -23,11 +23,12 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/scss/style.scss"
             ],
-            "scripts": ["node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"]
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/pace-js/pace.min.js"]
           },
           "configurations": {
             "production": {
@@ -126,5 +127,27 @@
       }
     }
   },
-  "defaultProject": "ngMkh"
+  "defaultProject": "ngMkh",
+  "schematics": {
+    "@schematics/angular:component": {
+      "inlineStyle": true,
+      "inlineTemplate": false,
+      "spec": false,
+      "prefix": "mkh",
+      "styleExt": "css"
+    },
+    "@schematics/angular:directive": {
+      "spec": false,
+      "prefix": "mkh"
+    },
+    "@schematics/angular:guard": {
+      "spec": false
+    },
+    "@schematics/angular:pipe": {
+      "spec": false
+    },
+    "@schematics/angular:service": {
+      "spec": false
+    }
+  }
 }
