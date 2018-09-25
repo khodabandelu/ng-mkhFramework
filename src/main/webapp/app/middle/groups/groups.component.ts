@@ -23,7 +23,7 @@ export class GroupsComponent implements OnInit {
   loadAll() {
     this.groupService.query().subscribe(
       (res: HttpResponse<IGroup[]>) => {
-        this.groups = res.body.rows;
+        // this.groups = res.body.rows;
       },
       (res: HttpErrorResponse) => this.onError(res.message)
     );

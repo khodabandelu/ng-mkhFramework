@@ -54,12 +54,12 @@ public class GroupResource {
      */
     @PostMapping("/groups")
     @Timed
-    public ResponseEntity<Group> createGroup(@Valid @RequestBody Group group) throws URISyntaxException {
-        log.debug("REST request to save Group : {}", group);
+    public ResponseEntity<Group> createGroup(@Valid @RequestBody GroupDto groupDto) throws URISyntaxException {
+        log.debug("REST request to save Group : {}", groupDto);
         if (group.getId() != null) {
             throw new BadRequestAlertException("A new group cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Group result = groupRepository.save(group);
+        GroupDto result = groupRepository.save(groupDto);
         return ResponseEntity.created(new URI("/api/groups/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);

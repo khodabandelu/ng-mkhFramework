@@ -21,7 +21,7 @@ export class ActionsComponent implements OnInit {
   loadAll() {
     this.actionService.query().subscribe(
       (res: HttpResponse<IAction[]>) => {
-        this.actions = res.body.rows;
+        // this.actions = res.body.rows;
       },
       (res: HttpErrorResponse) => this.onError(res.message)
     );

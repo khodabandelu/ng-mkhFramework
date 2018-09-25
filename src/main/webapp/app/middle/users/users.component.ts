@@ -27,7 +27,7 @@ export class UsersComponent implements OnInit {
   loadAll() {
     this.userService.query().subscribe(
       (res: HttpResponse<IUser[]>) => {
-        this.users = res.body.rows;
+        // this.users = res.body.rows;
       },
       (res: HttpErrorResponse) => this.onError(res.message)
     );
