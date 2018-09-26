@@ -46,7 +46,7 @@ public class GroupResource {
     }
 
     /**
-     * POST  /bank-accounts : Create a new group.
+     * POST  /groups : Create a new group.
      *
      * @param group the group to create
      * @return the ResponseEntity with status 201 (Created) and with body the new group, or with status 400 (Bad Request) if the group has already an ID
@@ -54,12 +54,12 @@ public class GroupResource {
      */
     @PostMapping("/groups")
     @Timed
-    public ResponseEntity<Group> createGroup(@Valid @RequestBody GroupDto groupDto) throws URISyntaxException {
-        log.debug("REST request to save Group : {}", groupDto);
+    public ResponseEntity<Group> createGroup(@Valid @RequestBody Group group) throws URISyntaxException {
+        log.debug("REST request to save Group : {}", group);
         if (group.getId() != null) {
             throw new BadRequestAlertException("A new group cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        GroupDto result = groupRepository.save(groupDto);
+        Group result = groupRepository.save(group);
         return ResponseEntity.created(new URI("/api/groups/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
